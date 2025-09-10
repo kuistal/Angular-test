@@ -1,0 +1,32 @@
+<div class="users-container">
+	<h2>Users</h2>
+
+	<div class="controls">
+		<input
+			type="text"
+			placeholder="Поиск по имени..."
+			(input)="onSearch($any($event.target).value)"
+		/>
+
+		<select (change)="onFilterChange($any($event.target).value)">
+			<option value="all">Все</option>
+			<option value="active">Активные</option>
+			<option value="inactive">Неактивные</option>
+		</select>
+	</div>
+
+	<ul class="list">
+		<li
+			*ngFor="let user of filteredUsers()"
+			(click)="onSelectUser(user.email)"
+			[class.inactive]="!user.active"
+		>
+			<span class="name">{{ user.name }}</span>
+			<span class="badge" [class.on]="user.active">{{ user.active ? 'active' : 'inactive' }}</span>
+		</li>
+	</ul>
+
+	<div class="detail" *ngIf="selectedEmail() as email">
+		<strong>Email:</strong> {{ email }}
+	</div>
+</div>
