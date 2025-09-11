@@ -50,10 +50,12 @@ npx ng build --configuration production
 # из корня репозитория (или подкорректировать путь к Dockerfile, если он внутри users-app)
 docker build -t angular-users-app .
 
----
-
 # запустить контейнер, смонтировать порт
 docker run --rm -p 4200:4200 angular-users-app
+---
+
+Структура проекта
+```
 Angular-test/
 ├─ users-app/
 │  ├─ src/
@@ -72,3 +74,4 @@ Angular-test/
 ├─ package-lock.json
 ├─ Dockerfile?          # если находится в корне или внутри users-app
 └─ README.md            # ты его сейчас создаёшь
+```
